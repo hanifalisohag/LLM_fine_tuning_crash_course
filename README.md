@@ -51,7 +51,7 @@ last word, let it guess, then nudge the weights slightly if it guessed wrong. Fo
 a text cut into $N$ words (tokens) $y_1 \dots y_N$:
 
 $$
-\mathcal{L} = -\frac{1}{N}\sum_{t=1}^{N} \log p(y_t \mid y_{<t})
+\mathcal{L} = -\frac{1}{N}\sum_{t=1}^{N} \log p(y_t \mid y_{1:t-1})
 $$
 
 Read it as: *the loss is small when the model gave a high probability to the word
@@ -74,7 +74,7 @@ gives you a small sticky note of corrections instead. In maths, the frozen weigh
 matrix $W_0$ stays as it is and we add a correction:
 
 $$
-W' = W_0 + \frac{\alpha}{r}\,B A
+W' = W_0 + \frac{\alpha}{r} B A
 $$
 
 - $W_0$ — the original weights, frozen.
@@ -140,9 +140,9 @@ the nearest millimetre. Pick a **step size** $S$ (how far apart the allowed valu
 are) and an offset $Z$, then round:
 
 $$
-q = \operatorname{round}\!\left(\frac{x}{S} + Z\right),
+q = \mathrm{round}\left(\frac{x}{S} + Z\right)
 \qquad
-\hat{x} = S\,(q - Z)
+\hat{x} = S(q - Z)
 $$
 
 $q$ is the small integer you store, $\hat x$ is the value you get back. The mistake
