@@ -1,0 +1,6 @@
+-r requirements-base.txt
+numpy==2.5.4
+matplotlib==3.11.2
+unsloth==2026.11.1
+ipywidgets==8.1.9
+llama-cpp-python==0.3.36
